@@ -22,10 +22,11 @@ type Server interface {
 	Close() error
 }
 
-func NewServer(addr string, delim string) (Server, error) {
+func NewServer(addr string, delim string, outFile string) (Server, error) {
 	p := Processor{
-		writer: os.Stdout,
-		delim:  delim,
+		writer:  os.Stdout,
+		delim:   delim,
+		outFile: outFile,
 	}
 	return &TcpServer{
 		addr:      addr,
